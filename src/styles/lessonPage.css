@@ -1,0 +1,201 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #e4e4e4;
+  font-family: DM Sans, sans-serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.load{
+  color: #4c7031;
+}
+.line{
+  width: 90%;
+  margin-left: auto; margin-right: auto;
+}
+.card{
+  width: 300px;
+  background-color: #111;
+}
+
+.header {
+  text-align: center;
+  font-weight: 400;
+  color: #fff;
+  background: blueviolet;
+  font-size: 27px;
+  padding: 5px 0;
+}
+.inputHolder1 {
+  margin: 15px 0;
+}
+.mainWrapper1 {
+  padding: 0 10px;
+}
+.mainContent1 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+@media (max-width: 800px) {
+  .mainContent1 {
+    flex-direction: column;
+ }
+}
+.inputHolder1 {
+  padding: 0 10px;
+  display: flex;
+}
+.inputHolder1 input[type='text'] {
+  max-width: 400px;
+  width: 100%;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 0;
+  display: inline-block;
+  border: 1px solid #222;
+  outline: none;
+}
+.inputHolder1 .uploadInput {
+  width: 0px;
+  height: 0px;
+  visibility: hidden;
+  opacity: 0;
+}
+.inputHolder1 .or {
+  align-items: center;
+  display: inline-flex;
+  padding: 0 20px;
+}
+.inputHolder1 .uploadImage {
+  padding: 8px 16px;
+  font-size: 16px;
+  background: #4c7031;
+  color: #fff;
+  display: inline-block;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  outline: none;
+}
+.imageHolder1 {
+  margin-left: 3%;
+  display: block;
+  flex: 0 0 50%;
+  height: 30.5rem;
+  width: 1.5rem;
+}
+@media (max-width: 800px) {
+  .imageHolder1 {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+ }
+}
+.imageHolder1:empty {
+  display: none;
+}
+.imageHolder1 img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.resultsHolder1 { 
+  padding: 30px;
+}
+@media (max-width: 800px) {
+  .resultsHolder1 {
+    width: 100%;
+    padding: 0;
+ }
+}
+.resultsHolder1 .result {
+  border: 1px solid #333;
+  margin: 0 0 10px;
+  padding: 10px;
+}
+.resultsHolder1 .result:first-of-type {
+  border-color: #333;
+  background-color: #4c7031;
+}
+.resultsHolder1 .result:first-of-type .name {
+  color: #fff;
+}
+.resultsHolder1 .result:first-of-type .confidence {
+  color: #dfdfdf;
+}
+.resultsHolder1 .result .name {
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.resultsHolder1 .result .confidence {
+  display: block;
+  font-weight: 300;
+}
+.resultsHolder1 .result .confidence .bestGuess {
+  background: #fff;
+  padding: 2px 6px;
+  color: #333;
+  margin-left: 3px;
+}
+.button {
+  padding: 12px 17px;
+  font-size: 18px;
+  background: #4c7031;
+  color: #fff;
+  display: inline-block;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  outline: none;
+}
+.recentPredictions {
+  margin: 40px 0 0;
+  background: #e4e4e4;
+  padding: 10px;
+}
+.recentPredictions h2 {
+  color: #111;
+  font-size: 26px;
+  margin: 10px 0;
+}
+.recentPredictions .recentImages {
+  display: flex;
+  flex-wrap: wrap;
+}
+.recentPredictions .recentPrediction {
+  flex: 0 0 20%;
+  cursor: pointer;
+}
+@media (max-width: 1100px) {
+  .recentPredictions .recentPrediction {
+    flex: 0 0 25%;
+ }
+}
+@media (max-width: 870px) {
+  .recentPredictions .recentPrediction {
+    flex: 0 0 33.3%;
+ }
+}
+@media (max-width: 700px) {
+  .recentPredictions .recentPrediction {
+    flex: 0 0 50%;
+ }
+}
+.recentPredictions .recentPrediction img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+@media (max-width: 700px) {
+  .recentPredictions .recentPrediction img {
+    height: 260px;
+ }
+}
