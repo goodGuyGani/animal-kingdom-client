@@ -11,9 +11,11 @@ const About = () => {
   const [abouts1, setAbouts1] = useState([]);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/api/about").then((response) => {
-      setAbouts1(response.data);
-    });
+    Axios.get("https://graceful-nightgown-wasp.cyclic.app/api/about").then(
+      (response) => {
+        setAbouts1(response.data);
+      }
+    );
   }, []);
 
   /*

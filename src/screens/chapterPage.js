@@ -30,10 +30,13 @@ export default function ChapterPage() {
     if (isInitialMount.current) {
       isInitialMount.current = false;
     } else {
-      Axios.post("http://localhost:3001/api/checkchapter", {
-        lesson: lessonid,
-        chapter: chapternum,
-      }).then((response) => {
+      Axios.post(
+        "https://graceful-nightgown-wasp.cyclic.app/api/checkchapter",
+        {
+          lesson: lessonid,
+          chapter: chapternum,
+        }
+      ).then((response) => {
         if (response.data.message == "Not Exist") {
           setChapterState(response.data.message);
           navigate(`/quizpage/${lessonid}/1`);
@@ -44,14 +47,16 @@ export default function ChapterPage() {
   });
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/api/chapters").then((response) => {
-      setChapter(response.data);
-    });
+    Axios.get("https://graceful-nightgown-wasp.cyclic.app/api/chapters").then(
+      (response) => {
+        setChapter(response.data);
+      }
+    );
   }, []);
 
   useEffect(() => {
     Axios.get(
-      `http://localhost:3001/api/checkchapterstate2/${userid}/${lessonid}`
+      `https://graceful-nightgown-wasp.cyclic.app/api/checkchapterstate2/${userid}/${lessonid}`
     ).then((response) => {
       setCheckingChap(response.data[0].chapterStateChapterId);
     });
@@ -59,7 +64,7 @@ export default function ChapterPage() {
 
   useEffect(() => {
     Axios.get(
-      `http://localhost:3001/api/checkchapterstate3/${userid}/${lessonid}/${
+      `https://graceful-nightgown-wasp.cyclic.app/api/checkchapterstate3/${userid}/${lessonid}/${
         chapternum + 1
       }`
     ).then((response) => {
@@ -75,11 +80,14 @@ export default function ChapterPage() {
     if (isInitialMount2.current) {
       isInitialMount2.current = false;
     } else {
-      Axios.post("http://localhost:3001/api/checkchapter2", {
-        user: myId,
-        lesson: lessonid,
-        chapter: chapternum,
-      }).then((response) => {
+      Axios.post(
+        "https://graceful-nightgown-wasp.cyclic.app/api/checkchapter2",
+        {
+          user: myId,
+          lesson: lessonid,
+          chapter: chapternum,
+        }
+      ).then((response) => {
         if (response.data.message == "Done") {
           setCheck1(response.data.message);
           isInitialMount2.current = false;
@@ -92,27 +100,32 @@ export default function ChapterPage() {
     if (isInitialMount3.current) {
       isInitialMount3.current = false;
     } else {
-      Axios.get("http://localhost:3001/api/login").then((response) => {
-        if (response.data.loggedIn == true) {
-          setMyId(response.data.user[0].userId);
-        } else {
-          navigate("/login");
-          isInitialMount3.current = false;
+      Axios.get("https://graceful-nightgown-wasp.cyclic.app/api/login").then(
+        (response) => {
+          if (response.data.loggedIn == true) {
+            setMyId(response.data.user[0].userId);
+          } else {
+            navigate("/login");
+            isInitialMount3.current = false;
+          }
         }
-      });
+      );
     }
   });
 
   const submit = () => {
     Axios.delete(
-      `http://localhost:3001/api/deletechapterstate/${userid}/${lessonid}`
+      `https://graceful-nightgown-wasp.cyclic.app/api/deletechapterstate/${userid}/${lessonid}`
     );
 
-    Axios.post("http://localhost:3001/api/chapstateinsert", {
-      username: myId,
-      lesson: lessonid,
-      chapter: chapternum,
-    });
+    Axios.post(
+      "https://graceful-nightgown-wasp.cyclic.app/api/chapstateinsert",
+      {
+        username: myId,
+        lesson: lessonid,
+        chapter: chapternum,
+      }
+    );
     setCheck1("Not Done");
   };
 

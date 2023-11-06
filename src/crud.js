@@ -10,13 +10,15 @@ export default function CrudApp() {
   const [newReview, setNewReview] = useState([""]);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/api/get").then((response) => {
-      setMovieList(response.data);
-    });
+    Axios.get("https://graceful-nightgown-wasp.cyclic.app/api/get").then(
+      (response) => {
+        setMovieList(response.data);
+      }
+    );
   }, []);
 
   const submitReview = () => {
-    Axios.post("http://localhost:3001", {
+    Axios.post("https://graceful-nightgown-wasp.cyclic.app", {
       movieName: movieName,
       movieReview: review,
     });
@@ -28,13 +30,15 @@ export default function CrudApp() {
   };
 
   const deleteReview = (movie) => {
-    Axios.delete(`http://localhost:3001/api/delete/${movie}`);
+    Axios.delete(
+      `https://graceful-nightgown-wasp.cyclic.app/api/delete/${movie}`
+    );
   };
 
   //create a function that inputs a string and capitalizes it
 
   const updateReview = (movie) => {
-    Axios.put("http://localhost:3001/api/update", {
+    Axios.put("https://graceful-nightgown-wasp.cyclic.app/api/update", {
       movieName: movie,
       movieReview: newReview,
     });

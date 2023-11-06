@@ -45,14 +45,16 @@ function AnimalRecog() {
     if (isInitialMount30.current) {
       isInitialMount30.current = false;
     } else {
-      Axios.get("http://localhost:3001/api/login").then((response) => {
-        if (response.data.loggedIn == true) {
-          setMyId(response.data.user[0].userId);
-          setIfLogin(true);
-        } else {
-          isInitialMount30.current = false;
+      Axios.get("https://graceful-nightgown-wasp.cyclic.app/api/login").then(
+        (response) => {
+          if (response.data.loggedIn == true) {
+            setMyId(response.data.user[0].userId);
+            setIfLogin(true);
+          } else {
+            isInitialMount30.current = false;
+          }
         }
-      });
+      );
     }
   });
 
@@ -87,12 +89,15 @@ function AnimalRecog() {
     if (ifLogin && textInputRef.current.value == "") {
       let formData = new FormData();
       formData.append("file", image.data);
-      const response = await fetch("http://localhost:3001/image", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "https://graceful-nightgown-wasp.cyclic.app/image",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
-      Axios.post("http://localhost:3001/api/galanimal", {
+      Axios.post("https://graceful-nightgown-wasp.cyclic.app/api/galanimal", {
         userid: myId,
         imgname: myImage,
         animalname: results[0].className,
@@ -101,7 +106,7 @@ function AnimalRecog() {
     } else if (ifLogin && !textInputRef.current.value == "") {
       const newImg = Math.random().toString(36).substring(2, 7);
 
-      Axios.post("http://localhost:3001/api/galanimal2", {
+      Axios.post("https://graceful-nightgown-wasp.cyclic.app/api/galanimal2", {
         userid: myId,
         imgname: newImg + ".png",
         animalname: results[0].className,
